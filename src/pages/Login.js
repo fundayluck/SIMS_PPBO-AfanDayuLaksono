@@ -11,8 +11,11 @@ import { selectCurrentToken, setCredentials } from '../services/auth/authSlice'
 
 import LoginImage from '../assets/image/Illustrasi_Login.png'
 import Logo from '../assets/logo/Logo.png'
+
 import { IoEye, IoEyeOff } from 'react-icons/io5'
 import { ImSpinner2 } from 'react-icons/im'
+import { MdAlternateEmail } from 'react-icons/md'
+import { CiLock } from 'react-icons/ci'
 
 const Login = ({ register }) => {
     const userRef = useRef()
@@ -134,6 +137,7 @@ const Login = ({ register }) => {
                     {register ? (
                         <>
                             <Input
+                                iconLeft={<MdAlternateEmail className='absolute ml-1 mr-2 text-[15px] text-[#B6BBC3] cursor-pointer mb-4' />}
                                 refer={userRef}
                                 styleInput='w-[350px] h-[38px]'
                                 placeholder='masukan email anda'
@@ -141,18 +145,21 @@ const Login = ({ register }) => {
                                 onChange={e => setNewEmail(e.target.value)}
                             />
                             <Input
+                                iconLeft={<MdAlternateEmail className='absolute ml-1 mr-2 text-[15px] text-[#B6BBC3] cursor-pointer mb-4' />}
                                 styleInput='w-[350px] h-[38px]'
                                 placeholder='nama depan'
                                 value={namaDepan}
                                 onChange={e => setNamaDepan(e.target.value)}
                             />
                             <Input
+                                iconLeft={<MdAlternateEmail className='absolute ml-1 mr-2 text-[15px] text-[#B6BBC3] cursor-pointer mb-4' />}
                                 styleInput='w-[350px] h-[38px]'
                                 placeholder='nama belakang'
                                 value={namaBelakang}
                                 onChange={e => setnamaBelakang(e.target.value)}
                             />
                             <Input
+                                iconLeft={<CiLock className='absolute ml-1 mr-2 text-[15px] text-[#B6BBC3] cursor-pointer mb-4' />}
                                 type={show ? 'text' : 'password'}
                                 styleInput='w-[350px] h-[38px]'
                                 placeholder='buat password'
@@ -165,6 +172,7 @@ const Login = ({ register }) => {
                                     <IoEye className='absolute mr-2 cursor-pointer mb-4' onClick={() => (setShow(true))} />}
                             />
                             <Input
+                                iconLeft={<CiLock className='absolute ml-1 mr-2 text-[15px] text-[#B6BBC3] cursor-pointer mb-4' />}
                                 type={showConfirm ? 'text' : 'password'}
                                 styleInput='w-[350px] h-[38px]'
                                 placeholder='konfirmasi password'
@@ -180,6 +188,7 @@ const Login = ({ register }) => {
                     ) : (
                         <>
                             <Input
+                                iconLeft={<MdAlternateEmail className='absolute ml-1 mr-2 text-[15px] text-[#B6BBC3] cursor-pointer mb-4' />}
                                 value={email}
                                 refer={userRef}
                                 onChange={(e) => setEmail(e.target.value)}
@@ -187,6 +196,7 @@ const Login = ({ register }) => {
                                 placeholder='email'
                             />
                             <Input
+                                iconLeft={<CiLock className='absolute ml-1 mr-2 text-[15px] text-[#B6BBC3] cursor-pointer mb-4' />}
                                 type={show ? 'text' : 'password'}
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}

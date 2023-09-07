@@ -27,7 +27,7 @@ const Banner = () => {
     };
     return (
         <div className='fixed w-full mt-3 '>
-            <h1>Temukan promo menarik</h1>
+            <h1 className='font-bold'>Temukan promo menarik</h1>
             <Slider autoplay {...settings} >
                 {allBanner.map((list, index) =>
                     <img

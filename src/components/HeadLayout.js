@@ -26,8 +26,6 @@ const HeadLayout = () => {
         getPrfl()
     }, [getProfile, getBalance, token])
 
-    let Rupiah = balance?.balance
-
     return (
         <>
             <div className="flex justify-between mt-5 ">

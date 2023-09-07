@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux'
 import { useLazyGetProfileQuery } from '../services/modules/profile'
 import { useLazyGetBalanceQuery } from '../services/modules/transaction'
 import { selectCurrentToken } from '../services/auth/authSlice'
+import CurrencyInput from 'react-currency-input-field'
 
 const HeadLayout = () => {
     const token = useSelector(selectCurrentToken)
@@ -24,6 +25,9 @@ const HeadLayout = () => {
         }
         getPrfl()
     }, [getProfile, getBalance, token])
+
+    let Rupiah = balance?.balance
+
     return (
         <>
             <div className="flex justify-between mt-5 ">
@@ -42,22 +46,21 @@ const HeadLayout = () => {
                     <p className='text-white font-bold text-[12px]'>Saldo anda</p>
                     <div className='flex text-white font-bold text-[27px] mb-[5px]'>
                         <p className='mr-1'>Rp</p>
-                        <input
-                            type={show ? 'text' : 'password'}
+                        <CurrencyInput
+                            type={show ? 'currency' : 'password'}
+                            className='w-[200px]  bg-[#F13B2F] outline-none hover:cursor-pointer'
+                            value={balance?.balance === 0 ?
+                                show ? balance.balance :
+                                    1231231 :
+                                balance?.balance}
                             readOnly
-                            className='w-[200px] bg-[#F13B2F]'
-                            defaultValue={
-                                balance?.balance === 0 ?
-                                    show ? balance.balance :
-                                        1231231 :
-                                    balance?.balance
-                            }
+                            decimalsLimit={2}
                         />
                     </div>
                     {show ?
-                        <p onClick={() => setShow(false)} className='text-white text-[11px] hover:cursor-pointer'>Tutup saldo</p>
+                        <div onClick={() => setShow(false)} className='absolute text-white text-[11px] hover:cursor-pointer'>Tutup saldo</div>
                         :
-                        <p onClick={() => setShow(true)} className='text-white text-[11px] hover:cursor-pointer'>Lihat saldo</p>
+                        <div onClick={() => setShow(true)} className='absolute text-white text-[11px] m-0 p-0 hover:cursor-pointer'>Lihat saldo</div>
                     }
                 </div>
             </div>

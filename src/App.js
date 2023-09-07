@@ -6,6 +6,7 @@ import PrivateRoute from "./services/auth/PrivateRoute";
 import { useSelector } from "react-redux";
 import { selectCurrentToken } from "./services/auth/authSlice";
 import Home from "./pages/Home";
+import HeadLayout from "./components/HeadLayout";
 
 
 
@@ -25,7 +26,9 @@ function App() {
             />
             <Route element={<PrivateRoute />} >
                 <Route element={<Layout />}>
-                    <Route path="/dashboard" element={<Home />} />
+                    <Route element={<HeadLayout />}>
+                        <Route path="/dashboard" element={<Home />} />
+                    </Route>
                 </Route>
             </Route>
 

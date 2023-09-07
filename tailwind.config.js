@@ -2,7 +2,11 @@
 module.exports = {
   content: ["./src/**/*.{html,js}"],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'saldo': "url('../assets/image/Background_Saldo.png')",
+      },
+    },
   },
   plugins: [],
 }

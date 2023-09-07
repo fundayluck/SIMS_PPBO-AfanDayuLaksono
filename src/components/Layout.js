@@ -1,8 +1,16 @@
 import { Outlet } from "react-router-dom"
-
 import Logo from '../assets/logo/Logo.png'
+import { useDispatch } from "react-redux"
+import { logOut } from "../services/auth/authSlice"
+
 
 const Layout = () => {
+
+
+    const dispatch = useDispatch()
+
+    const handleLogout = () => dispatch(logOut())
+
     return (
         <>
             <div className="fixed border border-1 w-full mt-[54px]"></div>
@@ -24,12 +32,13 @@ const Layout = () => {
                             </h1>
                         </li>
                         <li className='font-bold' >
-                            <h1 className='hover:cursor-pointer text-[#2E2E2E]'>
+                            <h1 onClick={handleLogout} className='hover:cursor-pointer text-[#2E2E2E]'>
                                 Akun
                             </h1>
                         </li>
                     </ul>
                 </nav>
+
                 <Outlet />
             </div>
         </>

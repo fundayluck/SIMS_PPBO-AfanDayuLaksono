@@ -1,8 +1,8 @@
 import React from 'react'
 
-const Button = ({ buttonName, styleButton }) => {
+const Button = ({ buttonName, styleButton, colorButton }) => {
     return (
-        <button className={`bg-[#F42619] text-white text-[13px] ${styleButton} `}>
+        <button className={`${colorButton} text-white text-[13px] ${styleButton} flex justify-center items-center`}>
             {buttonName}
         </button>
     )

@@ -1,15 +1,10 @@
-import { Outlet } from "react-router-dom"
+import { NavLink, Outlet } from "react-router-dom"
 import Logo from '../assets/logo/Logo.png'
-import { useDispatch } from "react-redux"
-import { logOut } from "../services/auth/authSlice"
+
 
 
 const Layout = () => {
 
-
-    const dispatch = useDispatch()
-
-    const handleLogout = () => dispatch(logOut())
 
     return (
         <>
@@ -32,9 +27,9 @@ const Layout = () => {
                             </h1>
                         </li>
                         <li className='font-bold' >
-                            <h1 onClick={handleLogout} className='hover:cursor-pointer text-[#2E2E2E]'>
+                            <NavLink to='/account' className='hover:cursor-pointer text-[#2E2E2E]'>
                                 Akun
-                            </h1>
+                            </NavLink>
                         </li>
                     </ul>
                 </nav>

@@ -7,7 +7,6 @@ import Slider from 'react-slick'
 const Banner = () => {
     const token = useSelector(selectCurrentToken)
     const [allBanner, setAllBanner] = useState([])
-    console.log(allBanner);
     const [getBanner] = useLazyGetBannerQuery()
 
     useEffect(() => {

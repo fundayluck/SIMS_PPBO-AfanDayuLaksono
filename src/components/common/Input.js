@@ -1,12 +1,15 @@
 import React from 'react'
 
 
-const Input = ({ type, placeholder, styleInput, value, onChange, refer, icon, iconLeft }) => {
+const Input = ({ readOnly, defaultValue, label, type, placeholder, styleInput, value, onChange, refer, icon, iconLeft }) => {
     return (
         <div className='flex items-center justify-start'>
             {iconLeft}
+            {label}
             <div className='flex justify-end items-center'>
                 <input
+                    readOnly={readOnly}
+                    defaultValue={defaultValue}
                     type={type}
                     ref={refer}
                     value={value}

@@ -7,6 +7,8 @@ import { useSelector } from "react-redux";
 import { selectCurrentToken } from "./services/auth/authSlice";
 import Home from "./pages/Home";
 import HeadLayout from "./components/HeadLayout";
+import Account from "./pages/Account";
+import Edit from "./components/account/Edit";
 
 
 
@@ -29,6 +31,8 @@ function App() {
                     <Route element={<HeadLayout />}>
                         <Route path="/dashboard" element={<Home />} />
                     </Route>
+                    <Route path="/account" element={<Account />} />
+                    <Route path="/edit-account" element={<Edit />} />
                 </Route>
             </Route>
 

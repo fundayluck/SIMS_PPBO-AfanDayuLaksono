@@ -16,6 +16,7 @@ import { IoEye, IoEyeOff } from 'react-icons/io5'
 import { ImSpinner2 } from 'react-icons/im'
 import { MdAlternateEmail } from 'react-icons/md'
 import { CiLock } from 'react-icons/ci'
+import { BsFillPersonFill } from 'react-icons/bs'
 
 const Login = ({ register }) => {
     const userRef = useRef()
@@ -145,14 +146,14 @@ const Login = ({ register }) => {
                                 onChange={e => setNewEmail(e.target.value)}
                             />
                             <Input
-                                iconLeft={<MdAlternateEmail className='absolute ml-1 mr-2 text-[15px] text-[#B6BBC3] cursor-pointer mb-4' />}
+                                iconLeft={<BsFillPersonFill className='absolute ml-1 mr-2 text-[15px] text-[#B6BBC3] cursor-pointer mb-4' />}
                                 styleInput='w-[350px] h-[38px]'
                                 placeholder='nama depan'
                                 value={namaDepan}
                                 onChange={e => setNamaDepan(e.target.value)}
                             />
                             <Input
-                                iconLeft={<MdAlternateEmail className='absolute ml-1 mr-2 text-[15px] text-[#B6BBC3] cursor-pointer mb-4' />}
+                                iconLeft={<BsFillPersonFill className='absolute ml-1 mr-2 text-[15px] text-[#B6BBC3] cursor-pointer mb-4' />}
                                 styleInput='w-[350px] h-[38px]'
                                 placeholder='nama belakang'
                                 value={namaBelakang}
@@ -180,9 +181,9 @@ const Login = ({ register }) => {
                                 onChange={e => setConfirmPassword(e.target.value)}
                                 icon={showConfirm
                                     ?
-                                    <IoEyeOff className='absolute mr-2 cursor-pointer mb-4' onClick={() => (setShowConfirm(false))} />
+                                    <IoEyeOff className='absolute mr-2 cursor-pointer mb-4 text-[#BBAAB1]' onClick={() => (setShowConfirm(false))} />
                                     :
-                                    <IoEye className='absolute mr-2 cursor-pointer mb-4' onClick={() => (setShowConfirm(true))} />}
+                                    <IoEye className='absolute mr-2 cursor-pointer mb-4 text-[#BBAAB1]' onClick={() => (setShowConfirm(true))} />}
                             />
                         </>
                     ) : (
@@ -204,25 +205,25 @@ const Login = ({ register }) => {
                                 placeholder='password'
                                 icon={show
                                     ?
-                                    <IoEyeOff className='absolute mr-2 cursor-pointer mb-4' onClick={() => (setShow(false))} />
+                                    <IoEyeOff className='absolute mr-2 cursor-pointer mb-4 text-[#BBAAB1]' onClick={() => (setShow(false))} />
                                     :
-                                    <IoEye className='absolute mr-2 cursor-pointer mb-4' onClick={() => (setShow(true))} />}
+                                    <IoEye className='absolute mr-2 cursor-pointer mb-4 text-[#BBAAB1]' onClick={() => (setShow(true))} />}
                             />
                         </>
                     )}
                     {register ?
                         (
                             <Button
-                                colorButton='bg-[#F42619]'
-                                styleButton='w-[350px] h-[38px] rounded shadow-md'
-                                buttonName={loadingRegist ? <ImSpinner2 className='animate-spin text-[22px]' /> : 'Daftar'}
+                                colorButton='bg-[#F42619] text-white'
+                                styleButton='w-[350px] h-[38px] rounded shadow-md font-bold'
+                                buttonName={loadingRegist ? <ImSpinner2 className='animate-spin text-[22px] text-white' /> : 'Daftar'}
                             />
 
                         ) : (
                             <Button
-                                colorButton='bg-[#F42619]'
-                                styleButton='w-[350px] h-[38px] rounded shadow-md'
-                                buttonName={loadingLogin ? <ImSpinner2 className='animate-spin text-[18px] content-center' /> : 'Masuk'}
+                                colorButton='bg-[#F42619] text-white'
+                                styleButton='w-[350px] h-[38px] rounded shadow-md font-bold'
+                                buttonName={loadingLogin ? <ImSpinner2 className='animate-spin text-[18px] text-white content-center' /> : 'Masuk'}
                             />
                         )
 

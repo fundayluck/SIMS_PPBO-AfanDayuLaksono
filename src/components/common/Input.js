@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-const Input = ({ readOnly, defaultValue, label, type, placeholder, styleInput, value, onChange, refer, icon, iconLeft }) => {
+const Input = ({ err, readOnly, defaultValue, label, type, placeholder, styleInput, value, onChange, refer, icon, iconLeft }) => {
     return (
         <div className='flex items-center justify-start'>
             {iconLeft}
@@ -14,7 +14,7 @@ const Input = ({ readOnly, defaultValue, label, type, placeholder, styleInput, v
                     ref={refer}
                     value={value}
                     onChange={onChange}
-                    className={`border border-[#DDDDDD] p-2 pl-6 ${styleInput} mb-5 outline-none`}
+                    className={`border border-[#DDDDDD] p-2 pl-6 ${styleInput} mb-5 outline-none ${err ? 'bg-red-100' : ''}`}
                     placeholder={placeholder}
                 />
                 {icon}

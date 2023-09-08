@@ -10,6 +10,7 @@ import HeadLayout from "./components/HeadLayout";
 import Account from "./pages/Account";
 import Edit from "./components/account/Edit";
 import Topup from "./pages/Topup";
+import Payment from "./components/dashboard/Payment";
 
 
 
@@ -31,6 +32,7 @@ function App() {
                 <Route element={<Layout />}>
                     <Route element={<HeadLayout />}>
                         <Route path="/dashboard" element={<Home />} />
+                        <Route path="/dashboard/service/:id" element={<Payment />} />
                         <Route path="/top-up" element={<Topup />} />
                     </Route>
                     <Route path="/account" element={<Account />} />

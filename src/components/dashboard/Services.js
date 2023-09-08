@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { selectCurrentToken } from '../../services/auth/authSlice'
 import { useLazyGetServicesQuery } from '../../services/modules/information'
+import { NavLink } from 'react-router-dom'
 
 const Services = () => {
     const token = useSelector(selectCurrentToken)
@@ -18,7 +19,7 @@ const Services = () => {
     return (
         <div className='flex mt-10'>
             {allService.map((list, index) =>
-                <div className='flex flex-col ' key={index}>
+                <NavLink to={`service/${index}`} className='flex flex-col ' key={index}>
                     <div className='p-3' >
                         <img
                             src={list.service_icon}
@@ -27,7 +28,7 @@ const Services = () => {
                         />
                     </div>
                     <p className='text-[10px] text-center mx-3'>{list?.service_name}</p>
-                </div>
+                </NavLink>
             )}
         </div>
     )

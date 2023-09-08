@@ -30,17 +30,6 @@ const Layout = () => {
                         </div>
                     </NavLink>
                     <ul className='grid grid-cols-3 gap-10 list-none justify-items-center'>
-                        {/* <li className='font-bold' >
-                            <h1 className='hover:cursor-pointer text-[#2E2E2E]'>
-                                Top Up
-                            </h1>
-                        </li>
-                        <li className='font-bold' >
-                            <h1 className='hover:cursor-pointer text-[#2E2E2E]'>
-                                Transaction
-                            </h1>
-                        </li> */}
-                        {/* hover:cursor-pointer text-[#2E2E2E] */}
                         {navbarList.map((list, index) =>
                             <li className='font-bold' key={index}>
                                 <NavLink to={list.path} className={({ isActive }) => (isActive ? "hover:cursor-pointer text-[#2E2E2E] text-[#F13B2E]" : "hover:cursor-pointer text-[#2E2E2E]")}>

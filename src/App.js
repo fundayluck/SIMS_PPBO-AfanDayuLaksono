@@ -9,6 +9,7 @@ import Home from "./pages/Home";
 import HeadLayout from "./components/HeadLayout";
 import Account from "./pages/Account";
 import Edit from "./components/account/Edit";
+import Topup from "./pages/Topup";
 
 
 
@@ -30,6 +31,7 @@ function App() {
                 <Route element={<Layout />}>
                     <Route element={<HeadLayout />}>
                         <Route path="/dashboard" element={<Home />} />
+                        <Route path="/top-up" element={<Topup />} />
                     </Route>
                     <Route path="/account" element={<Account />} />
                     <Route path="/edit-account" element={<Edit />} />

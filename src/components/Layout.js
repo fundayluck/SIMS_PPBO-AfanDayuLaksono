@@ -42,7 +42,7 @@ const Layout = () => {
                         </li> */}
                         {/* hover:cursor-pointer text-[#2E2E2E] */}
                         {navbarList.map((list, index) =>
-                            <li className='font-bold'>
+                            <li className='font-bold' key={index}>
                                 <NavLink to={list.path} className={({ isActive }) => (isActive ? "hover:cursor-pointer text-[#2E2E2E] text-[#F13B2E]" : "hover:cursor-pointer text-[#2E2E2E]")}>
                                     {list.name}
                                 </NavLink>

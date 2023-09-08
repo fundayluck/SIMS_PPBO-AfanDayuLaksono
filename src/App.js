@@ -11,6 +11,7 @@ import Account from "./pages/Account";
 import Edit from "./components/account/Edit";
 import Topup from "./pages/Topup";
 import Payment from "./components/dashboard/Payment";
+import History from "./pages/History";
 
 
 
@@ -34,6 +35,7 @@ function App() {
                         <Route path="/dashboard" element={<Home />} />
                         <Route path="/dashboard/service/:id" element={<Payment />} />
                         <Route path="/top-up" element={<Topup />} />
+                        <Route path="/transaction" element={<History />} />
                     </Route>
                     <Route path="/account" element={<Account />} />
                     <Route path="/edit-account" element={<Edit />} />

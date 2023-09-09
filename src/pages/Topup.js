@@ -68,7 +68,6 @@ const Topup = () => {
                 navigate('/dashboard')
             }
         } catch (error) {
-            console.log(error)
             Swal.fire(
                 'Error!',
                 `${error.message}`,

@@ -62,7 +62,6 @@ const Account = ({ update }) => {
     const dispatch = useDispatch()
 
     const handleUpdateImage = (e) => {
-        console.log(e);
         setFile(e.target.files[0]);
     }
 

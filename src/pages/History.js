@@ -6,9 +6,9 @@ import Slider from 'react-slick';
 import CustomCard from '../components/common/CustomCard';
 
 const months = [
-    'January', 'February', 'March', 'April',
-    'May', 'June', 'July', 'August',
-    'September', 'October', 'November', 'December'
+    'Januari', 'Februari', 'Maret', 'April',
+    'Mei', 'Juni', 'Juli', 'Agustus',
+    'September', 'Oktober', 'November', 'Desember'
 ];
 
 const settings = {
@@ -19,9 +19,9 @@ const settings = {
 const History = () => {
     const token = useSelector(selectCurrentToken)
     const [limit, setLimit] = useState(5)
-    const [getHistory] = useLazyGetHistoryQuery()
+    const [getHistory, { isFetching }] = useLazyGetHistoryQuery()
     const [list, setList] = useState([])
-
+    const [selectedMonth, setSelectedMonth] = useState('')
 
     useEffect(() => {
         const getHstry = async () => {
@@ -31,19 +31,35 @@ const History = () => {
         getHstry()
     }, [getHistory, token, limit])
 
+    const filterDataByMonth = (list, month) => {
+
+        if (!month) return list; // If no month is selected, return all data
+        return list.filter(item => {
+            const itemDate = new Date(item.created_on);
+
+            return (itemDate.getMonth() + 1) === month;
+        });
+    };
+
+    const filteredData = filterDataByMonth(list, selectedMonth)
+
     return (
         <div className='mt-4'>
             <h1 className='font-bold text-lg'>Semua Transaksi</h1>
             <div className='w-[70%]'>
                 <Slider  {...settings} >
                     {months ? months.map((list, index) =>
-                        <button key={index} className='text-lg font-bold text-[#87C3AE] p-3'>
+                        <button
+                            onClick={() => setSelectedMonth(index + 1)}
+                            key={index}
+                            className={selectedMonth === index + 1 ? 'text-lg underline font-bold text-[#87C3AE] p-3 outline-none' : 'text-lg  font-bold text-[#87C3AE] p-3 outline-none'}
+                        >
                             {list}
                         </button>
                     ) : []}
                 </Slider>
             </div>
-            <CustomCard data={list} setLimit={setLimit} limit={limit} />
+            <CustomCard isFetching={isFetching} data={filteredData} setLimit={setLimit} limit={limit} />
         </div>
     )
 }

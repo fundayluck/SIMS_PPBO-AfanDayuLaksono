@@ -1,7 +1,8 @@
 import moment from 'moment/moment'
 import React from 'react'
+import { ImSpinner2 } from 'react-icons/im';
 
-const CustomCard = ({ data, setLimit, limit }) => {
+const CustomCard = ({ data, setLimit, limit, isFetching }) => {
     let Item = data
 
     return Item.length < 1 ? (
@@ -41,9 +42,10 @@ const CustomCard = ({ data, setLimit, limit }) => {
                 )
             }) : []}
             {Item.length < limit ?
-                <p className='pb-1'>sudah tidak ada history transaksi.</p>
+                <p className='pb-1 text-black opacity-50 font-bold'>sudah tidak ada history transaksi.</p>
                 :
-                <button className='flex items-center text-red-500' onClick={() => setLimit(limit + 5)}>show more</button>
+                isFetching ? <ImSpinner2 className='animate-spin text-[18px] text-black content-center' /> :
+                    <button className='flex items-center text-red-500 font-bold' onClick={() => setLimit(limit + 5)}>show more</button>
             }
         </div>
     )

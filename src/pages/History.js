@@ -26,7 +26,7 @@ const History = () => {
     useEffect(() => {
         const getHstry = async () => {
             const response = await getHistory({ token, limit: limit })
-            setList(response?.data?.data?.records);
+            setList(response?.data?.data?.records ?? []);
         }
         getHstry()
     }, [getHistory, token, limit])

@@ -15,7 +15,8 @@ const Payment = () => {
     const [getServices] = useLazyGetServicesQuery()
     const [doPayment, { isFetching }] = useLazyDoPaymentQuery()
     const [getService, setGetService] = useState([])
-    const [tarif, setTarif] = useState('')
+    console.log(getService);
+    const [tarif, setTarif] = useState(0)
     const navigate = useNavigate()
     const { id } = useParams()
 
@@ -34,15 +35,16 @@ const Payment = () => {
     useEffect(() => {
         const getSrvcs = async () => {
             const res = await getServices(token)
+            console.log(res?.data?.data[id]);
             setGetService(res?.data?.data[id]);
-            setTarif(res?.data?.data[id]?.service_tariff)
+            setTarif(res?.data?.data[id]?.service_amount)
         }
         getSrvcs()
     }, [getServices, token, id])
 
     const processPayment = async (e) => {
         e.preventDefault()
-        const data = { service_code: getService?.service_code }
+        const data = { service_code: getService?.serviceCode }
         try {
             const response = await doPayment(data, token)
             if (response.status === 'fulfilled') {
@@ -104,8 +106,8 @@ const Payment = () => {
                 placeholder='masukan nominal top up'
                 className='border w-full h-[32px] mt-4 pl-8 outline-none'
                 decimalsLimit={2}
-                defaultValue={getService.service_tariff}
-                value={getService.service_tariff}
+                defaultValue={getService.service_amount}
+                value={getService.service_amount}
                 decimalSeparator=","
                 groupSeparator="."
             />

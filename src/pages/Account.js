@@ -53,8 +53,8 @@ const Account = ({ update }) => {
             const user = await getProfile(token)
             setUser(user?.data?.data)
             setEmail(user?.data?.data?.email)
-            setNDepan(user?.data?.data?.first_name)
-            setNBelakang(user?.data?.data?.last_name)
+            setNDepan(user?.data?.data?.firstName)
+            setNBelakang(user?.data?.data?.lastName)
         }
         getPrfl()
     }, [getProfile, token])
@@ -68,8 +68,8 @@ const Account = ({ update }) => {
     const handleUpdate = async (e) => {
         e.preventDefault()
         const data = {
-            first_name: nDepan,
-            last_name: nBelakang
+            firstName: nDepan,
+            lastName: nBelakang
         }
         try {
             const response = await updateProfile(data, token)
@@ -142,7 +142,7 @@ const Account = ({ update }) => {
             {openModal && modal}
             <div className='flex flex-col justify-center items-center mt-10'>
                 <label htmlFor='files' className='hover:cursor-pointer'>
-                    {isFetching || user.profile_image === undefined ?
+                    {isFetching || user.profile_image === undefined || user.profile_image === null ?
                         <img src={PImage} alt="avatar" className="w-[100px] h-[100px] rounded-full mb-2" /> :
                         user.profile_image === 'https://minio.nutech-integrasi.app/take-home-test/null' ?
                             <img src={PImage} alt="avatar" className="w-[100px] h-[100px] rounded-full mb-2" /> :

@@ -88,8 +88,8 @@ const Login = ({ register }) => {
             }
             const response = await registration({
                 email: data.newEmail,
-                first_name: data.namaDepan,
-                last_name: data.namaBelakang,
+                firstName: data.namaDepan,
+                lastName: data.namaBelakang,
                 password: data.newPassword
             })
             if (response.status === 'rejected') {
@@ -111,11 +111,16 @@ const Login = ({ register }) => {
                 password
             }
             const response = await login(data).unwrap()
+            console.log(response);
             dispatch(setCredentials({ token: response?.data?.token, email: response }))
             navigate('/dashboard')
         } catch (error) {
             console.log(error)
-            setErrMsg(error.data.message)
+            if (error.status === 'FETCH_ERROR') {
+                setErrMsg("internal server error")
+            } else {
+                setErrMsg(error.data.message)
+            }
         }
     }
 

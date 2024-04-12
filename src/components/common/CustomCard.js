@@ -31,13 +31,22 @@ const CustomCard = ({ data, setLimit, limit, isFetching }) => {
                     status = '-'
                     color = 'text-[#DE8467]'
                 }
+
+                if (list.statusPayment === "SUCCESS") {
+                    color = "text-[#85CAB1]"
+                } else {
+                    color = 'text-[#DE8467]'
+                }
                 return (
                     <div className='border border-1 w-full flex justify-between items-center p-4 mb-5 rounded-md' key={index}>
                         <div className=''>
                             <h1 className={`${color} font-bold text-lg`}>{status}Rp.{rupiah}</h1>
                             <p className='text-sm'>{moment(list.created_on).format('MMMM Do YYYY, h:mm:ss a')}</p>
                         </div>
-                        <p className='text-sm'>{list.description}</p>
+                        <div>
+                            <p className='text-sm'>{list.description}</p>
+                            <p className={`${color} font-bold text-sm text-center`}>{list.statusPayment}</p>
+                        </div>
                     </div>
                 )
             }) : []}

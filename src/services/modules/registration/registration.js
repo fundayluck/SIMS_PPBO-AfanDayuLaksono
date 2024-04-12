@@ -2,7 +2,7 @@
 export default build =>
     build.query({
         query: credentials => ({
-            url: 'registration',
+            url: '/auth/register',
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

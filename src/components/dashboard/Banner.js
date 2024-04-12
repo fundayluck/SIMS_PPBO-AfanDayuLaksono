@@ -8,11 +8,11 @@ const Banner = () => {
     const token = useSelector(selectCurrentToken)
     const [allBanner, setAllBanner] = useState([])
     const [getBanner] = useLazyGetBannerQuery()
-
+    console.log(allBanner);
     useEffect(() => {
         const getSrvc = async () => {
             const services = await getBanner(token)
-            setAllBanner(services?.data?.data);
+            setAllBanner(services?.data?.data ?? []);
         }
         getSrvc()
     }, [getBanner, token])

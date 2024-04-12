@@ -20,7 +20,7 @@ const HeadLayout = () => {
         const getPrfl = async () => {
             const user = await getProfile(token)
             const balance = await getBalance(token)
-            setUser(user?.data?.data)
+            setUser(user?.data?.data ?? [])
             setBalance(balance?.data?.data)
         }
         getPrfl()
@@ -31,14 +31,14 @@ const HeadLayout = () => {
             <div className="flex justify-between mt-5 ">
                 <div className="">
                     {
-                        isFetching || user.profile_image === undefined ?
+                        isFetching || user.profile_image === undefined || user.profile_image === null ?
                             <img src={PImage} alt="avatar" className="w-[50px] h-[50px] rounded-full mb-2" /> :
                             user.profile_image === 'https://minio.nutech-integrasi.app/take-home-test/null' ?
                                 <img src={PImage} alt="avatar" className="w-[50px] h-[50px] rounded-full mb-2" /> :
                                 <img src={user.profile_image} alt="avatar" className="w-[50px] h-[50px] rounded-full mb-2" />
                     }
                     <h1>Selamat Datang,</h1>
-                    <h1 className="font-bold text-[25px]">{`${user.first_name === undefined ? '' : `${user.first_name} ${user.last_name}`} `}</h1>
+                    <h1 className="font-bold text-[25px]">{`${user.firstName === undefined ? '' : `${user.firstName} ${user.lastName}`} `}</h1>
                 </div>
                 <div className="bg-saldo bg-contain bg-no-repeat w-[497px] py-5 px-3">
                     <p className='text-white font-bold text-[12px]'>Saldo anda</p>
@@ -47,10 +47,10 @@ const HeadLayout = () => {
                         <CurrencyInput
                             type={show ? 'currency' : 'password'}
                             className='w-[200px]  bg-[#F13B2F] outline-none hover:cursor-pointer'
-                            value={balance?.balance === 0 ?
+                            value={balance.balance === 0 ?
                                 show ? balance.balance :
                                     1231231 :
-                                balance?.balance}
+                                balance.balance}
                             readOnly
                             decimalsLimit={2}
                         />

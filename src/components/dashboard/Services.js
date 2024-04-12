@@ -12,24 +12,27 @@ const Services = () => {
     useEffect(() => {
         const getSrvc = async () => {
             const services = await getServices(token)
-            setAllService(services?.data?.data);
+            setAllService(services?.data?.data ?? []);
         }
         getSrvc()
     }, [getServices, token])
     return (
         <div className='flex mt-10'>
-            {allService.map((list, index) =>
-                <NavLink to={`service/${index}`} className='flex flex-col ' key={index}>
-                    <div className='p-3' >
-                        <img
-                            src={list.service_icon}
-                            alt={list?.service_name}
-                            width={100}
-                        />
-                    </div>
-                    <p className='text-[10px] text-center mx-3'>{list?.service_name}</p>
-                </NavLink>
-            )}
+            {allService.map((list, index) => {
+                console.log(index)
+                return (
+                    <NavLink to={`service/${index}`} className='flex flex-col ' key={index}>
+                        <div className='p-3' >
+                            <img
+                                src={list.service_icon}
+                                alt={list?.service_name}
+                                width={100}
+                            />
+                        </div>
+                        <p className='text-[10px] text-center mx-3'>{list?.service_name}</p>
+                    </NavLink>
+                )
+            })}
         </div>
     )
 }
